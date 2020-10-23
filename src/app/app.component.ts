@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MessagesModel } from './models/messages-model';
+import { RealtorsModel } from './models/realtors-model';
 import { RealtorsService } from './services/realtors.service';
 
 @Component({
@@ -7,11 +9,12 @@ import { RealtorsService } from './services/realtors.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'realtors';
-  constructor( private r: RealtorsService) {
+  realtors : RealtorsModel[];
+  selectedRealtorsMessages : MessagesModel[];
+  constructor( private realtorService: RealtorsService) {
   }
 
   ngOnInit() {
-    this.r.getAllRealtors();
+    this.realtors = this.realtorService.getAllRealtors();
   }
 }
