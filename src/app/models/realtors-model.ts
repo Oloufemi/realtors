@@ -1,5 +1,5 @@
 export interface RealtorsModel {
-    id: string;
+    id: number;
     logo: string;
     name: string;
     unread_messages: string;

@@ -3,36 +3,26 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RealtorsModel } from '../models/realtors-model';
 import { MessagesModel } from '../models/messages-model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RealtorsService {
   apiUrl = 'http://35.205.232.120/';
+  realtors: Array<RealtorsModel>;
 
   constructor( private _http: HttpClient) { }
 
-  /**
-   * Retrieve all realtors
-   */
-  getAllRealtors(): Array<RealtorsModel> {
-    let realtors: Array<RealtorsModel>;
-    this._http.get<RealtorsModel[]>(`${this.apiUrl}realtors`).subscribe((result) => {
-      realtors = result;
-      console.log(realtors);
-    });
-    return realtors;
+  getAllRealtors(): Observable<Array<RealtorsModel>> {
+    return this._http.get<RealtorsModel[]>(`${this.apiUrl}realtors`);
   }
 
   /**
    * 
-   * @param id Realtors Id
+   * @param id realtors Id
    */
-  getRealtorsMessages(id: string): Array<MessagesModel> {
-    let messages: Array<MessagesModel>;
-    this._http.get<MessagesModel[]>(`${this.apiUrl}realtors/${id}/messages`).subscribe((result) => {
-      messages = result;
-    });
-    return messages ;
+  getRealtorsMessages(id: number): Observable<Array<MessagesModel>> {
+    return this._http.get<MessagesModel[]>(`${this.apiUrl}realtors/${id}/messages`);
   }
 }
