@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
   realtors : RealtorsModel[];
   selectedAgenceId: number;
   messages : MessagesModel[];
+  selectedMessagesId: number;
+  messagenfo: MessagesModel;
 
   constructor( private realtorService: RealtorsService, private readonly store : Store) {
     realtorService.getAllRealtors().subscribe((result) =>{
@@ -31,6 +33,14 @@ export class AppComponent implements OnInit {
   getMessages(id : number): void {
     this.realtorService.getRealtorsMessages(id).subscribe((results) => {
       this.messages = results;
+      this.selectedMessagesId = this.messages[0].id;
+
+    })
+  }
+
+  getMessageInfo(idAgence: number, idMessage: number):void {
+    this.realtorService.getMessage(idAgence, idMessage).subscribe((result) => {
+      this.messagenfo = result;
     })
   }
 }

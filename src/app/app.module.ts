@@ -10,11 +10,13 @@ import { environment } from '../environments/environment';
 import { NgxsModule, Store } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { MessageListComponent } from './components/message-list/message-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    MessageListComponent
   ],
   imports: [
     BrowserModule,

@@ -25,4 +25,7 @@ export class RealtorsService {
   getRealtorsMessages(id: number): Observable<Array<MessagesModel>> {
     return this._http.get<MessagesModel[]>(`${this.apiUrl}realtors/${id}/messages`);
   }
+  getMessage(agenceId: number, messageId: number): Observable<MessagesModel> {
+    return this._http.get<MessagesModel>(`${this.apiUrl}realtors/${agenceId}/messages/${messageId}`);
+  }
 }
