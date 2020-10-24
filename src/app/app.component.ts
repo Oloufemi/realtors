@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     this.realtorService.getRealtorsMessages(id).subscribe((results) => {
       this.messages = results;
       this.selectedMessagesId = this.messages[0].id;
-
+      this.messagenfo = this.messages[0];
     })
   }
 

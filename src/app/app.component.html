@@ -1,4 +1,10 @@
-<app-header *ngIf="realtors && messages" [agencies]="realtors">
-</app-header>
-<app-message-list *ngIf="messages" [messages]="messages" >
-</app-message-list>
+<div class="app">
+    <app-header *ngIf="realtors && messages" [agencies]="realtors">
+    </app-header>
+    <div class="app--content--elements" >
+        <app-message-list *ngIf="messages" [messages]="messages" >
+        </app-message-list>
+        <app-message-information *ngIf="messagenfo" [messageDisplayed]="messagenfo" >
+        </app-message-information>
+    </div>
+</div>

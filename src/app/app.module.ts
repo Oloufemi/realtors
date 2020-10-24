@@ -11,12 +11,14 @@ import { NgxsModule, Store } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { MessageListComponent } from './components/message-list/message-list.component';
+import { MessageInformationComponent } from './components/message-information/message-information.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    MessageListComponent
+    MessageListComponent,
+    MessageInformationComponent
   ],
   imports: [
     BrowserModule,
