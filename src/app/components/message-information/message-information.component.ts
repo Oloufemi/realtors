@@ -12,7 +12,7 @@ export class MessageInformationComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.messageDisplayed);
+    // console.log(this.messageDisplayed);
   }
 
 }

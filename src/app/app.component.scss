@@ -3,5 +3,11 @@
     flex-direction: column;
     &--content--elements {
         display: flex;
+        app-message-list {
+            width: 30%;
+        }
+        app-message-information {
+            width: 70%;
+        }
     }
 }

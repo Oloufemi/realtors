@@ -1,7 +1,7 @@
 export interface MessagesModel {
     body: string;
     contact: Contact;
-    date: string;
+    date: Date;
     id: number;
     read: boolean;
     subject: string;

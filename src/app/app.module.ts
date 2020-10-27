@@ -12,6 +12,7 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { MessageListComponent } from './components/message-list/message-list.component';
 import { MessageInformationComponent } from './components/message-information/message-information.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { MessageInformationComponent } from './components/message-information/me
     }
     ),
     NgxsLoggerPluginModule.forRoot(),
+    MatIconModule
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+  

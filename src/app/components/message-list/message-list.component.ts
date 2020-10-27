@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MessagesModel } from 'src/app/models/messages-model';
+import { DisplayedMessage } from '../../models/displayed-message';
 
 @Component({
   selector: 'app-message-list',
@@ -7,11 +8,10 @@ import { MessagesModel } from 'src/app/models/messages-model';
   styleUrls: ['./message-list.component.scss']
 })
 export class MessageListComponent implements OnInit {
-  @Input() messages: MessagesModel[];
+  @Input() messages: DisplayedMessage[];
   constructor() { }
 
   ngOnInit() {
-    console.log(this.messages);
   }
 
 }

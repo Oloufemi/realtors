@@ -1,16 +1,22 @@
 <div class="messageList" >
-    <div class="messageList--item" >
-        <div>
-            icone
-        </div>
-        <div>
-            <p>Title</p>
-            <p>Subtitle</p>
-            <p>content</p>
-        </div>
-        <div>
-            Time or date
-        </div>
-    
+    <div class="messageList--item" *ngFor=" let message of messages" >
+        <ng-container *ngIf="message.type === 'phone'">
+            <mat-icon color = "primary">call</mat-icon>
+            <div class="messageList--item--texts">
+                <p> {{ message.name}}</p>
+                <p>{{ message.messageTitle}}</p>
+                <p>{{ message.messageContent}}</p>
+            </div>
+            <p> {{ message.period}}</p>
+        </ng-container>
+        <ng-container>
+            <mat-icon color = "primary">home</mat-icon>
+            <div class="messageList--item--texts">
+                <p>{{ message.name}}</p>
+                <p>{{ message.messageTitle}}</p>
+                <p>{{ message.messageContent}}</p>
+            </div>
+            <p> {{ message.period }}</p>
+        </ng-container>
     </div>
 </div>

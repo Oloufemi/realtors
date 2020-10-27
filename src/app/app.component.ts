@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
 import { RealtorsModel } from './models/realtors-model';
 import { RealtorsService } from './services/realtors.service';
-import { Observable } from 'rxjs';
-import { RealtorsState } from './state/realtors.state';
-import { GetRealtors } from './state/realtors.action';
 import { MessagesModel } from './models/messages-model';
+import { DisplayedMessage } from './models/displayed-message';
 
 @Component({
   selector: 'app-root',
@@ -15,11 +12,11 @@ import { MessagesModel } from './models/messages-model';
 export class AppComponent implements OnInit {
   realtors : RealtorsModel[];
   selectedAgenceId: number;
-  messages : MessagesModel[];
+  messages : DisplayedMessage[];
   selectedMessagesId: number;
   messagenfo: MessagesModel;
 
-  constructor( private realtorService: RealtorsService, private readonly store : Store) {
+  constructor( private realtorService: RealtorsService) {
     realtorService.getAllRealtors().subscribe((result) =>{
       this.realtors = result;
       this.selectedAgenceId = result[0].id;
@@ -34,7 +31,7 @@ export class AppComponent implements OnInit {
     this.realtorService.getRealtorsMessages(id).subscribe((results) => {
       this.messages = results;
       this.selectedMessagesId = this.messages[0].id;
-      this.messagenfo = this.messages[0];
+      this.getMessageInfo(this.selectedAgenceId, this.selectedMessagesId);
     })
   }
 

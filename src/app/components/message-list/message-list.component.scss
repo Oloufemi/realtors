@@ -1,0 +1,11 @@
+
+.messageList {
+
+    &--item {
+        display: flex;
+        &--texts {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
