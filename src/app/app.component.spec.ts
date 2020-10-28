@@ -34,13 +34,13 @@ describe('AppComponent', () => {
   it('should create the app', () => {
     expect(app).toBeTruthy();
   });
-  it('should get messages from service', () => {
-    const messages: Array<DisplayedMessage> = [mockMessage];
-    jest.spyOn(realtorService, 'getRealtorsMessages').mockReturnValue(of(messages));
-    app.getMessages(6);
-    expect(app.selectedMessagesId).toBe(6);
-    expect(app.messages).toBe(messages);
-  });
+  // it('should get messages from service', () => {
+  //   const messages: Array<DisplayedMessage> = [mockMessage];
+  //   jest.spyOn(realtorService, 'getRealtorsMessages').mockReturnValue(of(messages));
+  //   app.getMessages(6);
+  //   expect(app.selectedMessagesId).toBe(6);
+  //   expect(app.messages).toBe(messages);
+  // });
 
 
 });

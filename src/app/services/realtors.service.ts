@@ -12,7 +12,6 @@ import { DisplayedMessage } from '../models/displayed-message';
 })
 export class RealtorsService {
   apiUrl = 'http://35.205.232.120/';
-  realtors: Array<RealtorsModel>;
 
   constructor( private _http: HttpClient, private readonly mapper: Mapper) { }
 
@@ -24,13 +23,13 @@ export class RealtorsService {
    * 
    * @param id realtors Id
    */
-  getRealtorsMessages(id: number): Observable<Array<DisplayedMessage>> {
-    return this._http.get<MessagesModel[]>(`${this.apiUrl}realtors/${id}/messages`)
-    .pipe(
-      map( response => {
-        return this.mapper.messageModelToMessageDisplayed(response);
-      })
-    );
+  getRealtorsMessages(id: number, page?: number): Observable<Array<MessagesModel>> {
+    return this._http.get<MessagesModel[]>(`${this.apiUrl}realtors/${id}/messages/?page=${page}`);
+    // .pipe(
+    //   map( response => {
+    //     return this.mapper.messageModelToMessageDisplayed(response);
+    //   })
+    // );
   }
   getMessage(agenceId: number, messageId: number): Observable<MessagesModel> {
     return this._http.get<MessagesModel>(`${this.apiUrl}realtors/${agenceId}/messages/${messageId}`);
