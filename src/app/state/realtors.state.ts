@@ -61,7 +61,7 @@ export class RealtorsState {
       });
     }
     @Action(GetMessageDetails)
-    getMessageDetails({ patchState, dispatch}: StateContext<RealtorsStateModel>, {agenceId, messageId}: GetMessageDetails ) {
+    getMessageDetails({ patchState}: StateContext<RealtorsStateModel>, {agenceId, messageId}: GetMessageDetails ) {
       this.realtorsService.getMessage(agenceId, messageId).subscribe((response) => {
         console.log(response);
         patchState({

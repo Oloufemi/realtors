@@ -13,7 +13,6 @@ import { GetRealtors } from './state/realtors.action';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  messageInfo: MessagesModel;
 
   @Select(RealtorsState.getAgencies)
   all$: RealtorsModel[];
@@ -23,28 +22,10 @@ export class AppComponent implements OnInit {
   selectedMessageDetails$: MessagesModel;
 
   constructor( private realtorService: RealtorsService, private readonly store : Store) {
-    // realtorService.getAllRealtors().subscribe((result) =>{
-    //   this.realtors = result;
-    //   this.selectedAgenceId = result[0].id;
-    //   this.getMessages(this.selectedAgenceId);
-    // })
   }
 
   ngOnInit() {
     this.store.dispatch(new GetRealtors());
   }
 
-  // getMessages(id : number): void {
-  //   this.realtorService.getRealtorsMessages(id).subscribe((results) => {
-  //     this.messages = results;
-  //     this.selectedMessagesId = this.messages[0].id;
-  //     this.getMessageInfo(this.selectedAgenceId, this.selectedMessagesId);
-  //   })
-  // }
-
-  getMessageInfo(idAgence: number, idMessage: number):void {
-    this.realtorService.getMessage(idAgence, idMessage).subscribe((result) => {
-      this.messageInfo = result;
-    })
-  }
 }
