@@ -29,7 +29,6 @@ export class AppComponent implements OnInit {
   }
 
   updateValues(newAgenceId: number): void {
-    console.log('yeah');
     this.store.dispatch(new GetMessages(newAgenceId, 1));
   }
 }
