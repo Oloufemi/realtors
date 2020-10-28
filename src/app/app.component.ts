@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   selectedAgenceId: number;
   messages : DisplayedMessage[];
   selectedMessagesId: number;
-  messagenfo: MessagesModel;
+  messageInfo: MessagesModel;
 
   constructor( private realtorService: RealtorsService) {
     realtorService.getAllRealtors().subscribe((result) =>{
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
 
   getMessageInfo(idAgence: number, idMessage: number):void {
     this.realtorService.getMessage(idAgence, idMessage).subscribe((result) => {
-      this.messagenfo = result;
+      this.messageInfo = result;
     })
   }
 }
