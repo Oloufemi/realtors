@@ -1,1 +1,3 @@
-<p>header works!</p>
+<select name="agencylist" (change)="getNewAgencyInfo($event.target.value)">
+    <option *ngFor="let agency of agencies" [value]="agency.id" >{{ agency.name}}</option>
+</select>

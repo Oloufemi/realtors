@@ -1,5 +1,6 @@
 import { RealtorsModel } from '../../models/realtors-model';
-import { Component, Input, OnInit } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   @Input() agencies: RealtorsModel[];
+  @Output() changeAgency = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit() {
-    console.log(this.agencies);
   }
 
+  getNewAgencyInfo(id: number):void {
+    console.log('lefa' + id);
+    this.changeAgency.emit(id);
+  }
 }

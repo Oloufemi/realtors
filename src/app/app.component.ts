@@ -5,7 +5,7 @@ import { MessagesModel } from './models/messages-model';
 import { DisplayedMessage } from './models/displayed-message';
 import { Select, Store } from '@ngxs/store';
 import { RealtorsState } from './state/realtors.state';
-import { GetRealtors } from './state/realtors.action';
+import { GetMessages, GetRealtors } from './state/realtors.action';
 
 @Component({
   selector: 'app-root',
@@ -28,4 +28,8 @@ export class AppComponent implements OnInit {
     this.store.dispatch(new GetRealtors());
   }
 
+  updateValues(newAgenceId: number): void {
+    console.log('yeah');
+    this.store.dispatch(new GetMessages(newAgenceId, 1));
+  }
 }
