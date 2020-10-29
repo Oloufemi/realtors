@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RealtorsModel } from '../models/realtors-model';
-import { MessagesModel } from '../models/messages-model';
+import { MessageInfo, MessagesModel } from '../models/messages-model';
 import { map } from 'rxjs/operators';
 import { Mapper } from '../models/Mapper';
 import { DisplayedMessage } from '../models/displayed-message';
@@ -31,7 +31,12 @@ export class RealtorsService {
       })
     );
   }
-  getMessage(agenceId: number, messageId: number): Observable<MessagesModel> {
-    return this._http.get<MessagesModel>(`${this.apiUrl}realtors/${agenceId}/messages/${messageId}`);
+  getMessageDetails(agenceId: number, messageId: number): Observable<MessageInfo> {
+    return this._http.get<MessagesModel>(`${this.apiUrl}realtors/${agenceId}/messages/${messageId}`)
+    .pipe(
+      map( response => {
+        return this.mapper.messageModelToMessageInfo(response);
+      })
+    );
   }
 }

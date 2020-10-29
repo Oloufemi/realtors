@@ -1,6 +1,6 @@
 import { RealtorsModel } from '../models/realtors-model';
 import { Action, Selector, State, StateContext } from '@ngxs/store'
-import { MessagesModel } from '../models/messages-model';
+import { MessageInfo } from '../models/messages-model';
 import { RealtorsService } from '../services/realtors.service';
 import { Injectable } from '@angular/core';
 import { SetMessageDetails, SetMessages, SetRealtors, SetUnreadMessages } from './realtors.action';
@@ -9,7 +9,7 @@ import { DisplayedMessage } from '../models/displayed-message';
 export interface RealtorsStateModel {
   allAgencies: RealtorsModel[];
   selectedAgencyMessages: DisplayedMessage[];
-  selectedMessageDetails: MessagesModel;
+  selectedMessageDetails: MessageInfo;
   unreadMessages: number;
 }
 
@@ -69,7 +69,7 @@ export class RealtorsState {
     }
     @Action(SetMessageDetails)
     setMessageDetails({ patchState}: StateContext<RealtorsStateModel>, {agenceId, messageId}: SetMessageDetails ) {
-      this.realtorsService.getMessage(agenceId, messageId).subscribe((response) => {
+      this.realtorsService.getMessageDetails(agenceId, messageId).subscribe((response) => {
         patchState({
           selectedMessageDetails: response
         });

@@ -1,6 +1,6 @@
 export interface MessagesModel {
     body: string;
-    contact: Contact;
+    contact: ContactModel;
     date: Date;
     id: number;
     read: boolean;
@@ -8,9 +8,18 @@ export interface MessagesModel {
     type: string;
 }
 
-export interface Contact {
+export interface ContactModel {
     email: string; 
     firstname: string; 
     lastname: string; 
     phone: string; 
+}
+
+export interface MessageInfo {
+    email: string;
+    phone: string;
+    clientName: string;
+    dateOfMessage: string;
+    messageContent: string;
+    messageHour: string;
 }

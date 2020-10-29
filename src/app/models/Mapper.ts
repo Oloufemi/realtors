@@ -1,7 +1,5 @@
-import { Inject } from '@angular/core';
 import { DisplayedMessage } from './displayed-message';
-import { MessagesModel } from './messages-model';
-import { of } from 'rxjs';
+import { MessageInfo, MessagesModel } from './messages-model';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -35,10 +33,9 @@ export class Mapper {
             return 'Hier';
         }
         if(hours < 24 ) {
-            return '' + messageDate.getHours() + ' : ' + messageDate.getMinutes();
+            return messageDate.getHours() + ' : ' + messageDate.getMinutes();
         }
         let month = messageDate.getMonth() + 1;
-        let year = messageDate.getFullYear() ;
         return messageDate.getDate() + '/' + month +'/'+ messageDate.getFullYear();
     }
 
@@ -67,7 +64,19 @@ export class Mapper {
             }
             default: 
                 return '';
-
         }
+    }
+
+    messageModelToMessageInfo(model: MessagesModel): MessageInfo {
+        let messageDate = new Date(model.date);
+        let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        return {
+            clientName: model.contact.firstname + ' ' + model.contact.lastname,
+            dateOfMessage: messageDate.toLocaleDateString('fr-CA', options),
+            email: model.contact.email,
+            phone: model.contact.phone,
+            messageContent: model.body,
+            messageHour: messageDate.getHours() + ':' + messageDate.getMinutes()
+        };
     }
 }

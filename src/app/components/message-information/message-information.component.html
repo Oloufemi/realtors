@@ -1,18 +1,19 @@
 <div class="messageInfo">
     <div class="messageInfo-header">
         <div class="messageInfo-header-left">
-        <p>Test</p>
-        <p>jsjaskjaksjaskaj</p>
-        <p>kdskldlkfjafdmfnewfnfnwnef ejkrbjkfJSKBFJABSJK</p>
+        <p> {{ messageInfo.clientName}} </p>
+        <p>Email</p>
+        <p>Telephone</p>
         </div>
         <div class="messageInfo-header-right">
-        <p>jsjaskjaksjaskaj</p>
-        <p>kdskldlkfjafdmfnewfnfnwnef ejkrbjkfJSKBFJABSJK</p>
-        </div>
+        <p>{{ messageInfo.email}}</p>
+        <p>{{ messageInfo.phone}}</p>
     </div>
-    <div class="messageInfo-content">
-        <p>Test</p>
-        <p>jsjaskjaksjaskaj</p>
-        <p>kdskldlkfjafdmfnewfnfnwnef ejkrbjkfJSKBFJABSJK</p>
-    </div>
+</div>
+<div class="messageInfo-content">
+    <p>{{ messageInfo.clientName}}</p>
+    <p>{{ messageInfo.dateOfMessage}} a {{ messageInfo.messageHour}}</p>
+    <p> {{ messageInfo.body}}</p>
+    <p>{{ messageInfo.messageContent}}</p>
+</div>
 </div>
