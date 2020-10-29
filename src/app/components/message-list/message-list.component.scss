@@ -1,9 +1,14 @@
 
 .messageList {
-
-    &--item {
+    margin-left: 6%;
+    border: 1px solid green;
+    &-item {
         display: flex;
-        &--texts {
+        justify-content: space-between;
+        mat-icon {
+            margin-top: 5%;
+        }
+        &-texts {
             display: flex;
             flex-direction: column;
         }
