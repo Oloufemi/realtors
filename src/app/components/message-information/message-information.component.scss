@@ -3,7 +3,7 @@
 
     &-header {
         display: flex;
-
+        justify-content: space-between;
         &-right {
             display: flex;
             flex-direction: column;
