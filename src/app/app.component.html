@@ -1,7 +1,7 @@
 <div class="app">
     <app-header *ngIf="(all$ | async) as agences" [agencies]="agences" (changeAgency)="updateValues($event)" >
     </app-header>
-    <div class="app--content--elements" >
+    <div class="app-content-elements" >
         <app-message-list *ngIf=" (agencyMessage$ | async) as messages" [messages]="messages" >
         </app-message-list>
         <app-message-information *ngIf=" (selectedMessageDetails$ | async) as messageInfo" [messageDisplayed]="messagenfo" >

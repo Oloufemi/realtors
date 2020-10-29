@@ -13,4 +13,11 @@
             flex-direction: column;
         }
     }
+
+    @media screen and (max-width: 680px) {
+        margin-left: 2%;
+    }
+    @media screen and (min-width: 681px) and (max-width: 1279px) {
+
+    }
 }
