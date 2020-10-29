@@ -5,7 +5,7 @@ import { MessagesModel } from './models/messages-model';
 import { DisplayedMessage } from './models/displayed-message';
 import { Select, Store } from '@ngxs/store';
 import { RealtorsState } from './state/realtors.state';
-import { GetMessages, GetRealtors } from './state/realtors.action';
+import { SetMessages, SetRealtors, SetUnreadMessages } from './state/realtors.action';
 
 @Component({
   selector: 'app-root',
@@ -20,15 +20,18 @@ export class AppComponent implements OnInit {
   agencyMessage$: MessagesModel[];
   @Select(RealtorsState.getSelectedMessageDetails)
   selectedMessageDetails$: MessagesModel;
+  @Select(RealtorsState.getUnreadMessages)
+  unreadMessages$: number;
 
   constructor( private realtorService: RealtorsService, private readonly store : Store) {
   }
 
   ngOnInit() {
-    this.store.dispatch(new GetRealtors());
+    this.store.dispatch(new SetRealtors());
   }
 
   updateValues(newAgenceId: number): void {
-    this.store.dispatch(new GetMessages(newAgenceId, 1));
+    this.store.dispatch(new SetMessages(newAgenceId, 1));
+    this.store.dispatch(new SetUnreadMessages(newAgenceId));
   }
 }

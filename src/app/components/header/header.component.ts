@@ -9,6 +9,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   @Input() agencies: RealtorsModel[];
+  @Input() unreadMessages: number;
   @Output() changeAgency = new EventEmitter<number>();
   constructor() { }
 
@@ -16,7 +17,6 @@ export class HeaderComponent implements OnInit {
   }
 
   getNewAgencyInfo(id: number):void {
-    console.log('lefa' + id);
     this.changeAgency.emit(id);
   }
 }

@@ -3,19 +3,20 @@ import { Action, Selector, State, StateContext } from '@ngxs/store'
 import { MessagesModel } from '../models/messages-model';
 import { RealtorsService } from '../services/realtors.service';
 import { Injectable } from '@angular/core';
-import { GetMessageDetails, GetMessages, GetRealtors } from './realtors.action';
-import { map } from 'rxjs/operators';
+import { SetMessageDetails, SetMessages, SetRealtors, SetUnreadMessages } from './realtors.action';
 
 export interface RealtorsStateModel {
   allAgencies: RealtorsModel[];
   selectedAgencyMessages: MessagesModel[];
   selectedMessageDetails: MessagesModel;
+  unreadMessages: number;
 }
 
 export const initialState: RealtorsStateModel = {
     allAgencies: null,
     selectedAgencyMessages: null,
-    selectedMessageDetails: null
+    selectedMessageDetails: null,
+    unreadMessages: 0
 }
 
 @State<RealtorsStateModel>({
@@ -40,33 +41,50 @@ export class RealtorsState {
     static getSelectedMessageDetails(state: RealtorsStateModel) {
         return state.selectedMessageDetails;
     }
+    @Selector()
+    static getUnreadMessages(state: RealtorsStateModel) {
+        return state.unreadMessages;
+    }
 
-    @Action(GetRealtors)
-    getRealtors( { patchState, dispatch}: StateContext<RealtorsStateModel> ) {
+    @Action(SetRealtors)
+    setRealtors( { patchState, dispatch}: StateContext<RealtorsStateModel> ) {
       this.realtorsService.getAllRealtors().subscribe((response) => {
         patchState({
           allAgencies: response,
+          unreadMessages: parseInt(response[0].unread_messages)
         });
         this.selectedAgenceId = response[0].id;
-        dispatch(new GetMessages(response[0].id, 1));
+        dispatch(new SetMessages(response[0].id, 1));
       });
     }
-    @Action(GetMessages)
-    getMessages({ patchState, dispatch}: StateContext<RealtorsStateModel>, { agenceId, page} : GetMessages ) {
+    @Action(SetMessages)
+    setMessages({ patchState, dispatch}: StateContext<RealtorsStateModel>, { agenceId, page} : SetMessages ) {
       this.realtorsService.getRealtorsMessages(agenceId, page).subscribe((response) => {
         patchState({
           selectedAgencyMessages: response
         });
-      dispatch(new GetMessageDetails(this.selectedAgenceId, response[0].id))
+      dispatch(new SetMessageDetails(this.selectedAgenceId, response[0].id));
       });
     }
-    @Action(GetMessageDetails)
-    getMessageDetails({ patchState}: StateContext<RealtorsStateModel>, {agenceId, messageId}: GetMessageDetails ) {
+    @Action(SetMessageDetails)
+    setMessageDetails({ patchState}: StateContext<RealtorsStateModel>, {agenceId, messageId}: SetMessageDetails ) {
       this.realtorsService.getMessage(agenceId, messageId).subscribe((response) => {
-        console.log(response);
         patchState({
           selectedMessageDetails: response
         });
+      });
+    }
+    @Action(SetUnreadMessages)
+    setUnreadMessages({ patchState}: StateContext<RealtorsStateModel>, {agenceId}: SetUnreadMessages ) {
+      this.realtorsService.getAllRealtors().subscribe((response) => {
+        for(let agency of response) {
+          if( agency.id === agenceId) {
+            console.log('test:' + parseInt(agency.unread_messages));
+            patchState({
+              unreadMessages: parseInt(agency.unread_messages)
+            });
+          }
+        }
       });
     }
 }
