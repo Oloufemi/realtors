@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   @Select(RealtorsState.getAgencies)
   all$: RealtorsModel[];
   @Select(RealtorsState.getSelectedAgencyMessages)
-  agencyMessage$: MessagesModel[];
+  agencyMessage$: DisplayedMessage[];
   @Select(RealtorsState.getSelectedMessageDetails)
   selectedMessageDetails$: MessagesModel;
   @Select(RealtorsState.getUnreadMessages)

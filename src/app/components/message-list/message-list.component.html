@@ -3,29 +3,29 @@
         <ng-container *ngIf="message.type === 'phone'">
             <mat-icon color = "primary">call</mat-icon>
             <div class="messageList-item-texts">
-                <p>test</p>
-                <p>test</p>
-                <p>testsksjasjaklsjlakjsalksjka</p>
+                <p>{{ message.name}}</p>
+                <p>{{ message.messageTitle}}</p>
+                <p>{{ message.messageContent}}</p>
             </div>
-            <p> Heure</p>
+            <p> {{ message.period}}</p>
         </ng-container>
         <ng-container *ngIf="message.type === 'email'">
             <mat-icon color = "primary">email</mat-icon>
             <div class="messageList-item-texts">
-                <p>test</p>
-                <p>test</p>
-                <p>testsksjasjaklsjlakjsalksjka</p>
+                <p>{{ message.name}}</p>
+                <p>{{ message.messageTitle}}</p>
+                <p>{{ message.messageContent}}</p>
             </div>
-            <p> Heure</p>
+            <p> {{ message.period}}</p>
         </ng-container>
         <ng-container *ngIf="message.type === 'sms'">
             <mat-icon color = "primary">message</mat-icon>
             <div class="messageList-item-texts">
-                <p>test</p>
-                <p>test</p>
-                <p>testsksjasjaklsjlakjsalksjka</p>
+                <p>{{ message.name}}</p>
+                <p>{{ message.messageTitle}}</p>
+                <p>{{ message.messageContent}}</p>
             </div>
-            <p> Heure</p>
+            <p> {{ message.period}}</p>
         </ng-container>
     </div>
 </div>

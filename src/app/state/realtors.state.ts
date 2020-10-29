@@ -4,10 +4,11 @@ import { MessagesModel } from '../models/messages-model';
 import { RealtorsService } from '../services/realtors.service';
 import { Injectable } from '@angular/core';
 import { SetMessageDetails, SetMessages, SetRealtors, SetUnreadMessages } from './realtors.action';
+import { DisplayedMessage } from '../models/displayed-message';
 
 export interface RealtorsStateModel {
   allAgencies: RealtorsModel[];
-  selectedAgencyMessages: MessagesModel[];
+  selectedAgencyMessages: DisplayedMessage[];
   selectedMessageDetails: MessagesModel;
   unreadMessages: number;
 }

@@ -23,13 +23,13 @@ export class RealtorsService {
    * 
    * @param id realtors Id
    */
-  getRealtorsMessages(id: number, page?: number): Observable<Array<MessagesModel>> {
-    return this._http.get<MessagesModel[]>(`${this.apiUrl}realtors/${id}/messages/?page=${page}`);
-    // .pipe(
-    //   map( response => {
-    //     return this.mapper.messageModelToMessageDisplayed(response);
-    //   })
-    // );
+  getRealtorsMessages(id: number, page?: number): Observable<Array<DisplayedMessage>> {
+    return this._http.get<MessagesModel[]>(`${this.apiUrl}realtors/${id}/messages/?page=${page}`)
+    .pipe(
+      map( response => {
+        return this.mapper.messageModelToMessageDisplayed(response);
+      })
+    );
   }
   getMessage(agenceId: number, messageId: number): Observable<MessagesModel> {
     return this._http.get<MessagesModel>(`${this.apiUrl}realtors/${agenceId}/messages/${messageId}`);
