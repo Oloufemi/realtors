@@ -1,3 +1,16 @@
-<select name="agencylist" (change)="getNewAgencyInfo($event.target.value)">
-    <option *ngFor="let agency of agencies" [value]="agency.id" >{{ agency.name}}</option>
-</select>
+<div class="header">
+    <div class="header-left">
+        <mat-icon color = "primary">search</mat-icon>
+        <p>Meilleurs Agents PRO </p>
+        <div class="header-left-unread">
+            <mat-icon color = "primary">mark_email_unread</mat-icon>
+            <p>3</p>
+        </div>
+    </div>
+    <div class="header-right">
+        <p>Didier Martin</p>
+        <select name="agencylist" (change)="getNewAgencyInfo($event.target.value)">
+            <option *ngFor="let agency of agencies" [value]="agency.id" >{{ agency.name}}</option>
+        </select>
+    </div>
+</div>
