@@ -1,0 +1,17 @@
+
+.messageInfo {
+
+    &-header {
+        display: flex;
+
+        &-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+    }
+
+    &-content {
+        margin-top: 5%;
+    }
+}

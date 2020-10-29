@@ -4,10 +4,11 @@
     &--content--elements {
         display: flex;
         app-message-list {
-            width: 30%;
+            width: 35%;
         }
         app-message-information {
             width: 70%;
+            padding: 2%;
         }
     }
 }
